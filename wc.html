@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="d3.js"></script>
+  <script src="d3.layout.cloud.js"></script>
+  <script src="d3-wordcloud.js"></script>
+  
   <title>Document</title>
 </head>
 <body>
-<script type="text/javascript">
-d3.csv("./wordcloud.csv",function(data)){
+ <div id='wordcloud'></div>
+	<script type="text/javascript">
+	d3.csv("./wordcloud.csv",function(data)){
 	console.log(data.Open)
-	d3.wordcloud()
+	d3.wordcloud()  // 沒有告訴他他要被鎖在哪裡 
         .size([800, 400])
         .selector('#cloud')
         .words(data)
         .start();
-}
-</script>
+	}
+	</script>
 </body>
 </html>	
 
