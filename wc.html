@@ -9,6 +9,11 @@
 <script type="text/javascript">
 d3.csv("./wordcloud.csv",function(data)){
 	console.log(data.Open)
+	d3.wordcloud()
+        .size([800, 400])
+        .selector('#cloud')
+        .words(data)
+        .start();
 }
 </script>
 </body>
