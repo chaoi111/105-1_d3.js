@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+<script> 
+	var cdata=[
+	{cx:150, cy:150, r:50, color:"#ff1122"},
+	{cx:350, cy:350, r:10, color:"#0011ff"},
+	{cx:250, cy:250, r:20, color:"#ff0000"},
+	]	//[]is array, {} is element  ;d3 only accept 1d array;
+	
+	var svgctrl = d3.select("body").append("svg").attr("width",500).attr("height",500); //draw svg plane 
+	//var addC= svgctrl.append("circle").attr("cx",150).attr("cy",150).attr("r",50).attr("stroke-width",3) // add circle on the canvast
+	//var addC2 = svgctrl.append("circle").attr("cx",10).attr("cy",10).attr("r",50).attr("stroke-width",3)
+	var addDataToC = svgctrl.selectAll("circle").data(cdata).enter().append("circle"); //automatically alter 
+	var addC= addDataToC.attr("cx",function(d){return d.cx;}).attr("cy",function(d){return d.cy;}).
+	attr("r",function(d){return d.r;}).attr("fill",function(d){return d.color;});
+
+</script>
+  
+</body>
+</html>
