@@ -17,11 +17,18 @@ var ctrl=d3.select(".content").append("svg").attr("width",width).attr("height",h
 		console.log(data);
 
  	 var maxy = 0.7;
- 	 var xScale = d3.scale.linear().domain([0, data.length]).range([0, width]);
+ 	 var xScale = d3.scale.linear().domain([0,730]).range([0, width]);
 	 var yScale = d3.scale.linear().domain([d3.min(data),d3.max(data) ]).range([height, 0]);
 
-	 var lines = d3.line().x(function(d,i){return i*(width/ln);
-	 	}).y(function(d){return height*(1-d.efficiency/maxy)});
+	 var lines = d3.line().x(function(d){
+	 	return xScale(d.Date);
+	 }).y(function(d){
+	 	return yScale(d.efficiency);
+	 });
+
+
+	 // var lines = d3.line().x(function(d,i){return i*(width/ln);
+	 // 	}).y(function(d){return height*(1-d.efficiency/maxy)});
 
 	 var xAxis = d3.svg.axis().scale(xScale).orient('bottom')
 	 ctrl.append('g').attr('class','x axis').call(xAxis);
