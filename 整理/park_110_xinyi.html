@@ -71,12 +71,47 @@ d3.csv("park_110_xinyi.csv", function(error, data) {
   // add the x Axis
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+     .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+	
 
   // add the y Axis
   svg.append("g")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+     .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Efficiency (%)");	
+     
 
+//  svg.append("g")
+//       .attr("class", "x axis")
+//       .attr("transform", "translate(0," + height + ")")
+//       .call(xAxis)
+//     .selectAll("text")
+//       .style("text-anchor", "end")
+//       .attr("dx", "-.8em")
+//       .attr("dy", "-.55em")
+//       .attr("transform", "rotate(-90)" );
+
+//   svg.append("g")
+//       .attr("class", "y axis")
+//       .call(yAxis)
+//     .append("text")
+//       .attr("transform", "rotate(-90)")
+//       .attr("y", 6)
+//       .attr("dy", ".71em")
+//       .style("text-anchor", "end")
+//       .text("Value ($)");	
+	
+	
+	
 });
 
 </script>
