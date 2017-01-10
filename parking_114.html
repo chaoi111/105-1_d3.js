@@ -39,22 +39,22 @@ d3.csv("parking_114.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
-    d.sales = +d.sales;
+    d.efficiency = +d.efficiency;
   });
 
   // Scale the range of the data in the domains
-  x.domain(data.map(function(d) { return d.salesperson; }));
-  y.domain([0, d3.max(data, function(d) { return d.sales; })]);
+  x.domain(data.map(function(d) { return d.road; }));
+  y.domain([0, d3.max(data, function(d) { return d.efficiency; })]);
 
   // append the rectangles for the bar chart
   svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.salesperson); })
+      .attr("x", function(d) { return x(d.road); })
       .attr("width", x.bandwidth())
-      .attr("y", function(d) { return y(d.sales); })
-      .attr("height", function(d) { return height - y(d.sales); });
+      .attr("y", function(d) { return y(d.efficiency); })
+      .attr("height", function(d) { return height - y(d.efficiency); });
 
   // add the x Axis
   svg.append("g")
